@@ -1,4 +1,4 @@
-#include "TimerManage.h"
+#include "./View/TimerManage.h"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
