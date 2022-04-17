@@ -13,22 +13,26 @@ TimerManage::TimerManage(QWidget *parent)
 
     time = new QTimer(this);
     connect(time, &QTimer::timeout, this, &TimerManage::Timer_Update);
+
+    _pauseWidget = std::make_shared<PauseTimeWidget>(this);
 }
 
 TimerManage::~TimerManage()
 {
-
+    Btn_Finish();
 }
 
 void TimerManage::Btn_Start()
 {
     if (!_startflag) {
         ui.pushButton_start->setText(QStringLiteral("暂停"));
+        ui.pushButton_finish->setEnabled(true);
         time->start(1000);
         _startflag = true;
     }
     else {
         ui.pushButton_start->setText(QStringLiteral("开始"));
+        ui.pushButton_start->setEnabled(false);
         time->stop();
         if (QMessageBox::information(this, QStringLiteral("提示"), QStringLiteral("五秒后继续计时!"), QMessageBox::Ok) == QMessageBox::Ok)
         {
@@ -46,10 +50,12 @@ void TimerManage::Btn_Finish()
 
 void TimerManage::Btn_Chart()
 {
+
 }
 
 void TimerManage::Btn_List()
 {
+
 }
 
 void TimerManage::Timer_Update()
@@ -67,15 +73,24 @@ void TimerManage::Timer_Update()
             _hours++;        //min = min + 1;
             _mins = 0;
         }
-
-        QString str = QString("%1:%2:%3").arg(_hours, 4, 10, QLatin1Char('0')).arg(_mins, 2, 10, QLatin1Char('0')).arg(_secs, 2, 10, QLatin1Char('0'));
+        QString str = QString("%1:%2:%3").arg(_hours, 2, 10, QLatin1Char('0')).arg(_mins, 2, 10, QLatin1Char('0')).arg(_secs, 2, 10, QLatin1Char('0'));
         ui.label_countTime->setText(str);
     }
     else {
         if (_pauseflag < 5) {
             _pauseflag++;
-            QMessageBox::information(this, QStringLiteral("提示"), QString::number(_pauseflag));
+            _pauseWidget->ShowTime(_pauseflag);
+        }
+        else {
+            _pauseWidget->hide();
+            ui.pushButton_start->setText(QStringLiteral("暂停"));
+            _startflag = true;
+            ui.pushButton_start->setEnabled(true);
         }
     }
+}
+
+void TimerManage::InitDataBase()
+{
 
 }

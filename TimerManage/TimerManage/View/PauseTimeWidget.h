@@ -12,6 +12,7 @@ public:
     ~PauseTimeWidget();
 
     void ShowTime(int time);
+    void CloseTime();
 
 private:
     Ui::PauseTimeWidget ui;
