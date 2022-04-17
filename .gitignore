@@ -50,3 +50,6 @@ compile_commands.json
 
 # QtCreator local machine specific files for imported projects
 *creator.user*
+TimerManage/.vs
+TimerManage/x64
+TimerManage/TimerManage/x64
