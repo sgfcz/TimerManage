@@ -1,0 +1,15 @@
+﻿<Window x:Class="TimeManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeManager"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="170" Width="760">
+    <Grid>
+        <Button x:Name="Start" Content="开始" HorizontalAlignment="Left" Margin="191,31,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Pause" Content="暂停" HorizontalAlignment="Left" Margin="258,41,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Stop" Content="停止" HorizontalAlignment="Left" Margin="357,60,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
