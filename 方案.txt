@@ -1,5 +1,5 @@
 界面开发 
-技术方面 qt + c++ +sqlite
+技术方面 Wpf + sqlite
 主要需求 统计时间
 
 b/s browse service 
