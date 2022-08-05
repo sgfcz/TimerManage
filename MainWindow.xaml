@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeManager"
         mc:Ignorable="d"
-        Title="TimeManager" Height="170" Width="760">
+        Title="TimeManager" Height="170" MaxHeight="170" MinHeight="170" Width="760" MaxWidth="760" MinWidth="760">
     <Grid>
         <Button x:Name="Start" Content="开始" HorizontalAlignment="Left" Margin="331,10,0,0" VerticalAlignment="Top" Click="Start_Click"/>
         <Button x:Name="Pause" Content="暂停" HorizontalAlignment="Left" Margin="389,10,0,0" VerticalAlignment="Top" Click="Pause_Click"/>
@@ -15,9 +15,11 @@
         <Label Content="总时间：" HorizontalAlignment="Left" Margin="558,77,0,0" VerticalAlignment="Top"/>
         <Label x:Name="CountTime" Content="0000:00:00" HorizontalAlignment="Left" Margin="633,77,0,0" VerticalAlignment="Top"/>
         <Label Content="项目名称：" HorizontalAlignment="Left" Margin="558,7,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="ProjectName" Content="" HorizontalAlignment="Left" Margin="633,10,0,0" VerticalAlignment="Top"/>
         <Button x:Name="NewProject" Content="新建项目" HorizontalAlignment="Left" Margin="30,29,0,0" VerticalAlignment="Top" Click="NewProject_Click"/>
         <Button x:Name="DeleteProject" Content="删除项目" HorizontalAlignment="Left" Margin="30,63,0,0" VerticalAlignment="Top" Click="DeleteProject_Click"/>
-        <Button x:Name="ProjectList" Content="项目总览" HorizontalAlignment="Left" Margin="30,100,0,0" VerticalAlignment="Top" Click="ProjectList_Click"/>
+        <Button x:Name="ProjectListShowWin" Content="项目总览" HorizontalAlignment="Left" Margin="30,100,0,0" VerticalAlignment="Top" Click="ProjectList_Click"/>
+        <ComboBox x:Name="ProjectListComboBox" HorizontalAlignment="Left" Margin="628,8,0,0" VerticalAlignment="Top" Width="120"/>
+        
     </Grid>
+
 </Window>
