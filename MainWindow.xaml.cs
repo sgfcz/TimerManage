@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TimeManager.View;
 
 namespace TimeManager
 {
@@ -23,6 +24,38 @@ namespace TimeManager
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Start_Click(object sender, RoutedEventArgs e)
+        {
+            System.Console.WriteLine("Hello WPF!");
+        }
+
+        private void Pause_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Stop_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NewProject_Click(object sender, RoutedEventArgs e)
+        {
+            NewProjectWin newProjectWin = new NewProjectWin();
+            newProjectWin.Show();
+        }
+
+        private void DeleteProject_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ProjectList_Click(object sender, RoutedEventArgs e)
+        {
+            ProjectManageWin projectManageWin = new ProjectManageWin();
+            projectManageWin.Show();
         }
     }
 }

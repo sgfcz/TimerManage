@@ -5,11 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="170" Width="760">
+        Title="TimeManager" Height="170" Width="760">
     <Grid>
-        <Button x:Name="Start" Content="开始" HorizontalAlignment="Left" Margin="191,31,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Pause" Content="暂停" HorizontalAlignment="Left" Margin="258,41,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Stop" Content="停止" HorizontalAlignment="Left" Margin="357,60,0,0" VerticalAlignment="Top"/>
-
+        <Button x:Name="Start" Content="开始" HorizontalAlignment="Left" Margin="331,10,0,0" VerticalAlignment="Top" Click="Start_Click"/>
+        <Button x:Name="Pause" Content="暂停" HorizontalAlignment="Left" Margin="389,10,0,0" VerticalAlignment="Top" Click="Pause_Click"/>
+        <Button x:Name="Stop" Content="停止" HorizontalAlignment="Left" Margin="447,10,0,0" VerticalAlignment="Top" Click="Stop_Click"/>
+        <Label x:Name="NowTime" Content="0000:00:00" HorizontalAlignment="Left" Margin="633,52,0,0" VerticalAlignment="Top"/>
+        <Label Content="本次运行：" HorizontalAlignment="Left" Margin="558,52,0,0" VerticalAlignment="Top"/>
+        <Label Content="总时间：" HorizontalAlignment="Left" Margin="558,77,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CountTime" Content="0000:00:00" HorizontalAlignment="Left" Margin="633,77,0,0" VerticalAlignment="Top"/>
+        <Label Content="项目名称：" HorizontalAlignment="Left" Margin="558,7,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ProjectName" Content="" HorizontalAlignment="Left" Margin="633,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="NewProject" Content="新建项目" HorizontalAlignment="Left" Margin="30,29,0,0" VerticalAlignment="Top" Click="NewProject_Click"/>
+        <Button x:Name="DeleteProject" Content="删除项目" HorizontalAlignment="Left" Margin="30,63,0,0" VerticalAlignment="Top" Click="DeleteProject_Click"/>
+        <Button x:Name="ProjectList" Content="项目总览" HorizontalAlignment="Left" Margin="30,100,0,0" VerticalAlignment="Top" Click="ProjectList_Click"/>
     </Grid>
 </Window>
