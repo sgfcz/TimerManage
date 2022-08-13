@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="ProjectManage" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="14"/>
+
     </Grid>
 </Window>
