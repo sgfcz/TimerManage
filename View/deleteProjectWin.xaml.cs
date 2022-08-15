@@ -23,5 +23,15 @@ namespace TimeManager.View
         {
             InitializeComponent();
         }
+
+        private void ok_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
