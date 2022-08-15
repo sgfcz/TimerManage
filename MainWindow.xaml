@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeManager"
         mc:Ignorable="d"
-        Title="TimeManager" Height="170" MaxHeight="170" MinHeight="170" Width="760" MaxWidth="760" MinWidth="760" Loaded="Window_Loaded">
+        Title="TimeManager" Height="170" MaxHeight="170" MinHeight="170" Width="760" MaxWidth="760" MinWidth="760" Loaded="Window_Loaded" Closed="Window_Closed">
     <Grid Height="auto" Width="auto">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -17,7 +17,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="3*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel x:Name="futionStack" Orientation="Horizontal" Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0">
@@ -33,16 +33,20 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Content="本次运行：" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
                 <Label x:Name="NowTime" Content="0000:00:00"  HorizontalAlignment="Left" Margin="1" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" FontSize="14"/>
                 <Label Content="总时间：" HorizontalAlignment="Right" Margin="1" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" FontSize="14"/>
                 <Label x:Name="CountTime" Content="0000:00:00" HorizontalAlignment="Left" Margin="1" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" FontSize="14"/>
+                <Label Content="打卡次数：" Grid.Row="2" Grid.Column="0" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <Label x:Name="Times" Content="0" Margin="1" Grid.Row="2" Grid.Column="1"/>
             </Grid>
 
             <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Label Content="项目名称：" Margin="10, 0, 10, 0" FlowDirection="LeftToRight" Padding="0,0,0,0" Height="16" FontSize="14"/>
-                <ComboBox x:Name="ProjectListComboBox" Margin="10" Width="161" Height="22" FontSize="14"/>
+                <Label Content="项目名称：" Margin="3, 0, 3, 0" FlowDirection="LeftToRight" Padding="0,0,0,0" Height="16" FontSize="14"/>
+                <ComboBox x:Name="ProjectListComboBox" Margin="3, 0, 3, 0" Width="161" Height="22" FontSize="14" 
+                          DisplayMemberPath="projectNames" ItemsSource="{Binding Path=projectNames}"/>
             </StackPanel>
         </Grid>
         <StackPanel x:Name="ProjectStack" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="Auto">

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using TimeManager.View;
+using TimeManager.Core;
 
 namespace TimeManager
 {
@@ -23,7 +24,10 @@ namespace TimeManager
     public partial class MainWindow : Window
     {
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        SqlServer sql = new SqlServer();
+        private List<string> projectNames = new List<string>();
         private int hour, minute, second;
+        private int sHour, sMinute, sSecond;
         public MainWindow()
         {
 
@@ -40,6 +44,16 @@ namespace TimeManager
             second = 0;
 
             //todo获取数据库数据
+            if (sql.connect())
+            {
+                //todo 获取上次数据
+                projectNames = sql.search();
+            } 
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            sql.close();
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)
@@ -72,7 +86,17 @@ namespace TimeManager
 
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
-
+            dispatcherTimer.Stop();
+            //todo 添加进数据库
+            if (minute < 30)
+            {
+                MessageBox.Show("计时未到30分钟，无法打卡", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            hour = 0;
+            minute = 0;
+            second = 0;
+            NowTime.Content = $"{hour.ToString().PadLeft(4, '0')}:{minute.ToString().PadLeft(2, '0')}:" +
+                $"{second.ToString().PadLeft(2, '0')}";
         }
 
         private void NewProject_Click(object sender, RoutedEventArgs e)
