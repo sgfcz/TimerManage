@@ -7,9 +7,14 @@
         mc:Ignorable="d"
         Title="NewProject" Height="250" Width="250" MaxHeight="250" MaxWidth="250">
     <Grid>
-        <TextBox HorizontalAlignment="Center" Margin="0,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
-        <Button Content="确定" HorizontalAlignment="Left" Margin="36,172,0,0" VerticalAlignment="Top" Click="Button_Click_1" FontSize="14" Padding="5,1,5,1"/>
-        <Button Content="取消" HorizontalAlignment="Left" Margin="178,172,0,0" VerticalAlignment="Top" Click="Button_Click" FontSize="14" Padding="5,1,5,1"/>
-        <Label Content="项目名:" HorizontalAlignment="Left" Margin="65,70,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="TextBox_NewName" HorizontalAlignment="Center" Margin="0,100,0,0" 
+                 TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" 
+                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
+        <Button x:Name="ok" Content="确定" HorizontalAlignment="Left" Margin="36,172,0,0" VerticalAlignment="Top" 
+                Click="Button_Click_ok" FontSize="14" Padding="5,1,5,1"/>
+        <Button x:Name="cancel" Content="取消" HorizontalAlignment="Left" Margin="178,172,0,0" 
+                VerticalAlignment="Top" Click="Button_Click_cancel" FontSize="14" Padding="5,1,5,1"/>
+        <Label Content="项目名:" HorizontalAlignment="Left" Margin="65,70,0,0" VerticalAlignment="Top" 
+               FontSize="14"/>
     </Grid>
 </Window>

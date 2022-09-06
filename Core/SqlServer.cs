@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SQLite;
+using System.Windows;
 
 namespace TimeManager.Core
 {
-    internal class SqlServer
+    public class SqlServer
     {
         SQLiteConnection sqlServer = new SQLiteConnection("data source=./Data/base.db3");
         public bool connect()
@@ -67,9 +68,21 @@ namespace TimeManager.Core
         {
             return true;
         }
+
+        public bool isOpen()
+        {
+            if (sqlServer.State != ConnectionState.Open)
+                return true;
+            else 
+                return false;
+        }
         
         public List<string> search()
         {
+            if (isOpen())
+            {
+                sqlServer.Open();
+            }
             SQLiteDataReader sql_read;
             SQLiteCommand cmd = sqlServer.CreateCommand();
             cmd.CommandText = "SELECT NAME FROM project";
@@ -83,7 +96,7 @@ namespace TimeManager.Core
         }
         private void newTable()
         {
-           if (sqlServer.State != ConnectionState.Open)
+           if (isOpen())
             {
                 sqlServer.Open();
             }
@@ -92,7 +105,7 @@ namespace TimeManager.Core
                 return;
             }
             string table1 = "CREATE TABLE project" +
-                "(ID INT PRIMARY KEY," +
+                "(ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "NAME Text," +
                 "COUNTTIME TEXT," +
                 "TIMES INT)";
@@ -103,7 +116,6 @@ namespace TimeManager.Core
             cmd.ExecuteNonQuery();
             cmd.CommandText = table2;
             cmd.ExecuteNonQuery();
-            sqlServer.Close();
         }
     }
 
