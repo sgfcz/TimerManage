@@ -19,19 +19,24 @@ namespace TimeManager.View
     /// </summary>
     public partial class NewProjectWin : Window
     {
-        public NewProjectWin()
+        SqlServer addsql;
+        public NewProjectWin(ref SqlServer mainsql) 
         {
+            this.addsql = mainsql;
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_ok(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            string projectName = TextBox_NewName.Text;
+            bool addF = addsql.add(projectName);
+            if (addF)
+                Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_cancel(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

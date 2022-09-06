@@ -101,7 +101,7 @@ namespace TimeManager
 
         private void NewProject_Click(object sender, RoutedEventArgs e)
         {
-            NewProjectWin newProjectWin = new NewProjectWin();
+            NewProjectWin newProjectWin = new NewProjectWin(ref sql);
             newProjectWin.Show();
         }
 

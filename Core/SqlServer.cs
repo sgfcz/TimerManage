@@ -30,9 +30,37 @@ namespace TimeManager.Core
             sqlServer.Close();
         }
 
-        public bool add()
+        public bool add(string name)
         {
-            return true;
+
+            SQLiteDataReader sql_read;
+            SQLiteCommand cmd = sqlServer.CreateCommand();
+
+
+            cmd.CommandText = $"SELECT NAME FROM project where NAME = '{name}'";
+            sql_read = cmd.ExecuteReader();
+            if (sql_read.Read())
+            {
+                MessageBox.Show("数据已存在！", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            cmd.Dispose();
+
+            cmd.CommandText = "INSERT INTO project(NAME,COUNTTIME,TIMES) VALUES(@name, @counttime, @times)";
+            cmd.Parameters.Add("name", DbType.String).Value = name;
+            cmd.Parameters.Add("counttime", DbType.String).Value = "0000:00:00";
+            cmd.Parameters.Add("times", DbType.Int32).Value = 0;
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = $"SELECT NAME FROM project where NAME = '{name}'";
+            sql_read = cmd.ExecuteReader();
+            if (sql_read.Read())
+                return true;
+            else
+            {
+                MessageBox.Show("插入失败！", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
         }
 
         public bool delete()
