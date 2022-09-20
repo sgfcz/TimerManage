@@ -7,6 +7,7 @@ using TimeManager.View;
 using TimeManager.Core;
 using TimeManager.Model;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace TimeManager
 {
@@ -162,13 +163,17 @@ namespace TimeManager
 
         private void ProjectListComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            ViewMessageUpdate((sender as ComboBox).SelectedValue.ToString());
+            if ((sender as ComboBox).SelectedValue == null)
+                ViewMessageUpdate((ProjectListComboBox.SelectedIndex = 0).ToString());
+            else 
+                ViewMessageUpdate((sender as ComboBox).SelectedValue.ToString());
         }
 
         public void MainDeleteProjectName(object item)
         {
+            if (projects.Count > 0)
+                sql.delete("DELETE FROM project WHERE NAME=\"" + (item as ProjectNames).Name + "\"");
             projects.Remove(item as ProjectNames);
-            sql.delete("DELETE FROM project WHERE NAME=\"" + (item as ProjectNames).Name + "\"");
         }
 
         private void ProjectList_Click(object sender, RoutedEventArgs e)
