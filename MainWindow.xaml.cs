@@ -102,16 +102,29 @@ namespace TimeManager
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             dispatcherTimer.Stop();
-            //todo 添加进数据库
-            if (minute < 30)
-            {
-                MessageBox.Show("计时未到30分钟，无法打卡", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+            if (!_start)
+                return;
+
+            string? nowTime = NowTime.Content.ToString();
+            string? times = Times.Content.ToString();
             hour = 0;
             minute = 0;
             second = 0;
             NowTime.Content = $"{hour.ToString().PadLeft(4, '0')}:{minute.ToString().PadLeft(2, '0')}:" +
                 $"{second.ToString().PadLeft(2, '0')}";
+            if (minute < 3)
+            {
+                MessageBox.Show("计时未到3分钟，无法打卡", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            else
+            {
+                MessageBox.Show("打卡成功", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            sql.Update(ProjectListComboBox.Text, nowTime, times);
+            Start.IsEnabled = true;
+            ViewMessageUpdate(ProjectListComboBox.Text);
         }
 
         private void NewProject_Click(object sender, RoutedEventArgs e)
