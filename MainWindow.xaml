@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeManager"
         mc:Ignorable="d"
-        Title="TimeManager" Height="170" MaxHeight="170" MinHeight="170" Width="760" MaxWidth="760" MinWidth="760" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="TimeManager" Height="170" MaxHeight="170" MinHeight="170" Width="760" MaxWidth="760" MinWidth="760" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid Height="auto" Width="auto">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
