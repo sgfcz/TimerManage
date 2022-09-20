@@ -36,16 +36,35 @@ namespace TimeManager
             minute = 0;
             second = 0;
 
-            //todo获取数据库数据
             if (sql.connect())
             {
-                //todo 获取上次数据
-                projectNames = sql.search();
+                List<string> lastProject = sql.search("SELECT NAME FROM last");
+                List<string> projectNames = sql.search("SELECT NAME FROM project");
+                
+                for (int size = 0; size < projectNames.Count; size++)
+                {
+                    projects.Add(new ProjectNames() { Name = projectNames[size] });
+                }
+
+                ProjectListComboBox.SelectedValue = lastProject[0];
             } 
+        }
+
+        private void ViewMessageUpdate(string itemText)
+        {
+            List<ProjectMessages> message = sql.searchMessage("SELECT * FROM project WHERE NAME=\"" +
+                                                                itemText + "\"");
+            if (message.Count > 0)
+            {
+                CountTime.Content = message[0].CountTime;
+                Times.Content = message[0].Times;
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            if (ProjectListComboBox.Text != String.Empty)
+                sql.UpdateLast(ProjectListComboBox.Text);
             sql.close();
         }
 
