@@ -72,8 +72,9 @@ namespace TimeManager
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-
             dispatcherTimer.Start();
+            _start = true;
+            Start.IsEnabled = false;
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
