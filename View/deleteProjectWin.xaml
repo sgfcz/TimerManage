@@ -8,7 +8,8 @@
         Title="deleteProjectWin" Height="141" Width="374" MaxHeight="141" MaxWidth="374">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="374" Height="136">
         <Label Content="项目名称:" HorizontalAlignment="Left" Margin="95,44,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox HorizontalAlignment="Left" Margin="169,44,0,0" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <ComboBox x:Name="DeleteList" HorizontalAlignment="Left" Margin="169,44,0,0" 
+                  VerticalAlignment="Top" Width="120" FontSize="14" DisplayMemberPath="Name"/>
         <Button x:Name="ok" Content="确定" HorizontalAlignment="Left" Margin="68,91,0,0" VerticalAlignment="Top" FontSize="14" Click="ok_Click" Padding="5,1,5,1"/>
         <Button x:Name="cancel" Content="取消" HorizontalAlignment="Left" Margin="278,91,0,0" VerticalAlignment="Top" FontSize="14" Click="cancel_Click" Padding="5,1,5,1"/>
 
