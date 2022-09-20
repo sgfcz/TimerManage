@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.SQLite;
 using System.Windows;
+using TimeManager.Model;
 
 namespace TimeManager.Core
 {
@@ -134,7 +132,7 @@ namespace TimeManager.Core
                 return false;
         }
         
-        public List<string> search()
+        public List<String> search(string commandText)
         {
             if (isOpen())
             {
@@ -142,9 +140,9 @@ namespace TimeManager.Core
             }
             SQLiteDataReader sql_read;
             SQLiteCommand cmd = sqlServer.CreateCommand();
-            cmd.CommandText = "SELECT NAME FROM project";
+            cmd.CommandText = commandText;
             sql_read = cmd.ExecuteReader();
-            List<string> names = new List<string>();
+            List<string> names = new();
             while (sql_read.Read())
             {
                 names.Add(sql_read.GetString(0));
