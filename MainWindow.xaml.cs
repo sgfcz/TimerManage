@@ -107,11 +107,13 @@ namespace TimeManager
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
             dispatcherTimer.Stop();
+            Start.IsEnabled = true;
         }
 
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             dispatcherTimer.Stop();
+            Start.IsEnabled = true;
             if (!_start)
                 return;
 
@@ -133,7 +135,6 @@ namespace TimeManager
             }
 
             sql.Update(ProjectListComboBox.Text, nowTime, times);
-            Start.IsEnabled = true;
             ViewMessageUpdate(ProjectListComboBox.Text);
         }
 
