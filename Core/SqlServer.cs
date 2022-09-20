@@ -151,6 +151,26 @@ namespace TimeManager.Core
             }
             return names;
         }
+
+        public List<ProjectMessages> searchMessage(string commandText)
+        {
+            if (isOpen())
+            {
+                sqlServer.Open();
+            }
+            SQLiteDataReader sql_read;
+            SQLiteCommand cmd = sqlServer.CreateCommand();
+            cmd.CommandText = commandText;
+            sql_read = cmd.ExecuteReader();
+            List<ProjectMessages> projectMessages = new();
+            while (sql_read.Read())
+            {
+                ProjectMessages message = new ProjectMessages { CountTime = sql_read.GetString(2), 
+                                                                    Times = sql_read.GetInt32(3) };
+                projectMessages.Add(message);
+            }
+            return projectMessages;
+        }
         private void newTable()
         {
            if (isOpen())
