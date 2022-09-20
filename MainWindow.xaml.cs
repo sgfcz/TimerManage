@@ -149,6 +149,17 @@ namespace TimeManager
             deleteProjectWin.Show();
         }
 
+        private void ProjectListComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            ViewMessageUpdate((sender as ComboBox).SelectedValue.ToString());
+        }
+
+        public void MainDeleteProjectName(object item)
+        {
+            projects.Remove(item as ProjectNames);
+            sql.delete("DELETE FROM project WHERE NAME=\"" + (item as ProjectNames).Name + "\"");
+        }
+
         private void ProjectList_Click(object sender, RoutedEventArgs e)
         {
             ProjectManageWin projectManageWin = new ProjectManageWin();
