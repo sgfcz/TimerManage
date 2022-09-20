@@ -45,8 +45,7 @@
 
             <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Label Content="项目名称：" Margin="3, 0, 3, 0" FlowDirection="LeftToRight" Padding="0,0,0,0" Height="16" FontSize="14"/>
-                <ComboBox x:Name="ProjectListComboBox" Margin="3, 0, 3, 0" Width="161" Height="22" FontSize="14" 
-                          DisplayMemberPath="projectNames" ItemsSource="{Binding Path=projectNames}"/>
+                <ComboBox x:Name="ProjectListComboBox" Margin="3, 0, 3, 0" Width="161" Height="22" FontSize="14" DisplayMemberPath="Name" SelectionChanged="ProjectListComboBox_SelectionChanged"/>
             </StackPanel>
         </Grid>
         <StackPanel x:Name="ProjectStack" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="Auto">
