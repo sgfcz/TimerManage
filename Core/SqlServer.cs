@@ -11,7 +11,7 @@ namespace TimeManager.Core
 {
     public class SqlServer
     {
-        SQLiteConnection sqlServer = new SQLiteConnection("data source=./Data/base.db3");
+        SQLiteConnection sqlServer = new SQLiteConnection("data source=./Data/base.db3"); //需要在生成目录新建Data文件夹
         public bool connect()
         {
             try
