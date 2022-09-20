@@ -26,6 +26,8 @@ namespace TimeManager
         {
 
             InitializeComponent();
+            ProjectListComboBox.SelectedValuePath = "Name";
+            ProjectListComboBox.ItemsSource = projects;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
