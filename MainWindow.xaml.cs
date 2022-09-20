@@ -69,7 +69,6 @@ namespace TimeManager
             if (MessageBox.Show("确定要退出吗？", Title.ToString(), MessageBoxButton.YesNo,
                     MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                //TODO 直接退出，需要存储结果
                 e.Cancel = false;
                 if (ProjectListComboBox.Text != String.Empty)
                     sql.UpdateLast(ProjectListComboBox.Text);
