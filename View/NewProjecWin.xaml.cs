@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TimeManager.Core;
+using TimeManager.Model;
 
 namespace TimeManager.View
 {
@@ -21,6 +22,8 @@ namespace TimeManager.View
     public partial class NewProjectWin : Window
     {
         SqlServer addsql;
+        public event MainCreateSuccess CreateSuccess;
+
         public NewProjectWin(ref SqlServer mainsql) 
         {
             this.addsql = mainsql;
@@ -32,7 +35,10 @@ namespace TimeManager.View
             string projectName = TextBox_NewName.Text;
             bool addF = addsql.add(projectName);
             if (addF)
+            {
+                CreateSuccess(projectName);
                 Close();
+            }
         }
 
         private void Button_Click_cancel(object sender, RoutedEventArgs e)
