@@ -130,12 +130,22 @@ namespace TimeManager
         private void NewProject_Click(object sender, RoutedEventArgs e)
         {
             NewProjectWin newProjectWin = new NewProjectWin(ref sql);
+            newProjectWin.CreateSuccess += new MainCreateSuccess(MainAddProjectName);
             newProjectWin.Show();
+        }
+
+        public void MainAddProjectName(string projectName)
+        {
+            projects.Add(new ProjectNames() { Name = projectName });
+            ProjectListComboBox.SelectedValue = projectName;
         }
 
         private void DeleteProject_Click(object sender, RoutedEventArgs e)
         {
             deleteProjectWin deleteProjectWin = new deleteProjectWin();
+            deleteProjectWin.DeleteList.ItemsSource = projects;
+            deleteProjectWin.DeleteList.SelectedValue = ProjectListComboBox.Text;
+            deleteProjectWin.DeleteSuccess += new MainDeleteSuccess(MainDeleteProjectName);
             deleteProjectWin.Show();
         }
 
