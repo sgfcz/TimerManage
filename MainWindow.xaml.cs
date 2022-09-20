@@ -124,7 +124,7 @@ namespace TimeManager
                 $"{second.ToString().PadLeft(2, '0')}";
             if (minute < 3)
             {
-                MessageBox.Show("计时未到3分钟，无法打卡", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("计时未到3分钟，无法打卡，本次不会记录", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             else
