@@ -64,8 +64,65 @@ namespace TimeManager.Core
             }
         }
 
-        public bool delete()
+        public bool delete(string commandText)
         {
+            SQLiteCommand cmd = sqlServer.CreateCommand();
+            cmd.CommandText = commandText;
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+
+        public bool Update(string projectName, string nowTime, string times)
+        {
+            if (isOpen())
+            {
+                sqlServer.Open();
+            }
+            string countTime = "";
+            int countTimes = 0;
+            SQLiteDataReader sql_read;
+            SQLiteCommand cmd = sqlServer.CreateCommand();
+            cmd.CommandText = "SELECT * FROM project WHERE NAME=\"" + projectName + "\"";
+            sql_read = cmd.ExecuteReader();
+            while (sql_read.Read())
+            {
+                countTime = sql_read.GetString(2);
+                countTimes = sql_read.GetInt32(3);
+
+            }
+            cmd.Dispose();
+
+            string[] countTimeWords = countTime.Split(':');
+            string[] nowTimeWords = nowTime.Split(':');
+            List<int> countTimeInts = new();
+            for(int i = 0; i < countTimeWords.Length; i++)
+            {
+                countTimeInts.Add(Convert.ToInt32(countTimeWords[i]) + Convert.ToInt32(nowTimeWords[i])); 
+            }
+            countTimes += countTimes + Convert.ToInt32(times);
+            countTime  = $"{countTimeInts[0].ToString().PadLeft(4, '0')}:{countTimeInts[1].ToString().PadLeft(2, '0')}:" +
+                $"{countTimeInts[2].ToString().PadLeft(2, '0')}";
+
+            cmd.CommandText = "UPDATE project SET COUNTTIME = @count, TIMES = @times WHERE NAME = @name";
+            cmd.Parameters.AddWithValue("@count", countTime);
+            cmd.Parameters.AddWithValue("@times", countTimes);
+            cmd.Parameters.AddWithValue("@name", projectName);
+            cmd.ExecuteNonQuery();
+
+            return true;
+        }
+
+        public bool UpdateLast(string name)
+        {
+            SQLiteCommand cmd = sqlServer.CreateCommand();
+            cmd.CommandText = "DELETE FROM last";
+            cmd.ExecuteNonQuery();
+            //cmd.Dispose();
+
+            cmd.CommandText = "INSERT INTO last(NAME) VALUES(@name)";
+            cmd.Parameters.Add("name", DbType.String).Value = name;
+            cmd.ExecuteNonQuery();
+
             return true;
         }
 
