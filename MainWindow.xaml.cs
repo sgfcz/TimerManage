@@ -63,11 +63,21 @@ namespace TimeManager
             }
         }
 
-        private void Window_Closed(object sender, EventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (ProjectListComboBox.Text != String.Empty)
-                sql.UpdateLast(ProjectListComboBox.Text);
-            sql.close();
+            if (MessageBox.Show("确定要退出吗？", Title.ToString(), MessageBoxButton.YesNo,
+                    MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                //TODO 直接退出，需要存储结果
+                e.Cancel = false;
+                if (ProjectListComboBox.Text != String.Empty)
+                    sql.UpdateLast(ProjectListComboBox.Text);
+                
+                Stop.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+                sql.close();
+            }
+            else 
+                e.Cancel = true;
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)
