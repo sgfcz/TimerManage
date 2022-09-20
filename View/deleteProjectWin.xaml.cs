@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TimeManager.Model;
 
 namespace TimeManager.View
 {
@@ -19,13 +20,16 @@ namespace TimeManager.View
     /// </summary>
     public partial class deleteProjectWin : Window
     {
+        public event MainDeleteSuccess DeleteSuccess;
         public deleteProjectWin()
         {
             InitializeComponent();
+            DeleteList.SelectedValuePath = "Name";
         }
 
         private void ok_Click(object sender, RoutedEventArgs e)
         {
+            DeleteSuccess(DeleteList.SelectedItem);
             this.Close();
         }
 
