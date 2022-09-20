@@ -29,8 +29,18 @@ namespace TimeManager.View
 
         private void ok_Click(object sender, RoutedEventArgs e)
         {
-            DeleteSuccess(DeleteList.SelectedItem);
-            this.Close();
+            if(!DeleteList.HasItems)
+            {
+                MessageBox.Show("无选项可删", "Warning", MessageBoxButton.YesNo,
+                                MessageBoxImage.Warning);
+                return;
+            }
+            if (MessageBox.Show("确定要删除项目吗？", "delete", MessageBoxButton.YesNo, 
+                MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                    DeleteSuccess(DeleteList.SelectedItem);
+                    this.Close();
+            }
         }
 
         private void cancel_Click(object sender, RoutedEventArgs e)
