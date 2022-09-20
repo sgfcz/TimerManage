@@ -18,9 +18,10 @@ namespace TimeManager
     {
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
         SqlServer sql = new SqlServer();
-        private List<string> projectNames = new List<string>();
         private int hour, minute, second;
-        private int sHour, sMinute, sSecond;
+        private string currentProject = String.Empty;
+        private bool _start = false;
+        private ObservableCollection<ProjectNames> projects = new();
         public MainWindow()
         {
 
