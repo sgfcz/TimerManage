@@ -70,7 +70,7 @@ namespace TimeManager
                     MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 e.Cancel = false;
-                if (ProjectListComboBox.Text != String.Empty)
+                if (ProjectListComboBox.Text != String.Empty && _start)
                     sql.UpdateLast(ProjectListComboBox.Text);
                 
                 Stop.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
