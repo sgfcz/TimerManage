@@ -70,7 +70,7 @@ namespace TimeManager
                     MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 e.Cancel = false;
-                if (ProjectListComboBox.Text != String.Empty && _start)
+                if (ProjectListComboBox.Text != String.Empty)
                     sql.UpdateLast(ProjectListComboBox.Text);
                 
                 Stop.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
@@ -108,6 +108,7 @@ namespace TimeManager
         {
             dispatcherTimer.Stop();
             Start.IsEnabled = true;
+            _start = false;
         }
 
         private void Stop_Click(object sender, RoutedEventArgs e)
@@ -116,7 +117,7 @@ namespace TimeManager
             Start.IsEnabled = true;
             if (!_start)
                 return;
-
+            _start = false;
             string? nowTime = NowTime.Content.ToString();
             string? times = Times.Content.ToString();
             hour = 0;
