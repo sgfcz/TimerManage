@@ -48,8 +48,8 @@ namespace TimeManager
                 {
                     projects.Add(new ProjectNames() { Name = projectNames[size] });
                 }
-
-                ProjectListComboBox.SelectedValue = lastProject[0];
+                if (lastProject.Count > 0)
+                    ProjectListComboBox.SelectedValue = lastProject[0];
             } 
         }
 
