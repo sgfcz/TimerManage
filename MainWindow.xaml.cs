@@ -119,11 +119,6 @@ namespace TimeManager
             if (!_start)
                 return;
             _start = false;
-            string? nowTime = NowTime.Content.ToString();
-            string? times = Times.Content.ToString();
-            hour = 0;
-            minute = 0;
-            second = 0;
             NowTime.Content = $"{hour.ToString().PadLeft(4, '0')}:{minute.ToString().PadLeft(2, '0')}:" +
                 $"{second.ToString().PadLeft(2, '0')}";
             if (minute < 3)
@@ -135,7 +130,11 @@ namespace TimeManager
             {
                 MessageBox.Show("打卡成功", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
+            string? nowTime = NowTime.Content.ToString();
+            string? times = Times.Content.ToString();
+            hour = 0;
+            minute = 0;
+            second = 0;
             sql.Update(ProjectListComboBox.Text, nowTime, times);
             ViewMessageUpdate(ProjectListComboBox.Text);
         }
