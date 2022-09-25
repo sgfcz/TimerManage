@@ -38,7 +38,7 @@ namespace TimeManager
             hour = 0;
             minute = 0;
             second = 0;
-
+            Pause.IsEnabled = false;
             if (sql.connect())
             {
                 List<string> lastProject = sql.search("SELECT NAME FROM last");
@@ -85,6 +85,7 @@ namespace TimeManager
             dispatcherTimer.Start();
             _start = true;
             Start.IsEnabled = false;
+            Pause.IsEnabled = true;
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -108,7 +109,7 @@ namespace TimeManager
         {
             dispatcherTimer.Stop();
             Start.IsEnabled = true;
-            _start = false;
+            Pause.IsEnabled = false;
         }
 
         private void Stop_Click(object sender, RoutedEventArgs e)
