@@ -79,7 +79,7 @@ namespace TimeManager.Core
             return true;
         }
 
-        public bool Update(string projectName, string nowTime, string times)
+        public bool Update(string projectName, string nowTime)
         {
             if (isOpen())
             {
@@ -106,7 +106,7 @@ namespace TimeManager.Core
             {
                 countTimeInts.Add(Convert.ToInt32(countTimeWords[i]) + Convert.ToInt32(nowTimeWords[i])); 
             }
-            countTimes += countTimes + Convert.ToInt32(times);
+            countTimes = countTimes + 1;
             countTime  = $"{countTimeInts[0].ToString().PadLeft(4, '0')}:{countTimeInts[1].ToString().PadLeft(2, '0')}:" +
                 $"{countTimeInts[2].ToString().PadLeft(2, '0')}";
 
