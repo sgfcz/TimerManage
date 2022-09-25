@@ -39,6 +39,7 @@ namespace TimeManager
             minute = 0;
             second = 0;
             Pause.IsEnabled = false;
+
             if (sql.connect())
             {
                 List<string> lastProject = sql.search("SELECT NAME FROM last");
@@ -49,7 +50,10 @@ namespace TimeManager
                     projects.Add(new ProjectNames() { Name = projectNames[size] });
                 }
                 if (lastProject.Count > 0)
+                {
                     ProjectListComboBox.SelectedValue = lastProject[0];
+                    ViewMessageUpdate(lastProject[0]);
+                }
             } 
         }
 
@@ -66,6 +70,7 @@ namespace TimeManager
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            Pause_Click(null, null);
             if (MessageBox.Show("确定要退出吗？", Title.ToString(), MessageBoxButton.YesNo,
                     MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
@@ -76,8 +81,11 @@ namespace TimeManager
                 Stop.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                 sql.close();
             }
-            else 
+            else
+            {
+                Start_Click(null, null);
                 e.Cancel = true;
+            }
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)
@@ -119,24 +127,26 @@ namespace TimeManager
             if (!_start)
                 return;
             _start = false;
-            NowTime.Content = $"{hour.ToString().PadLeft(4, '0')}:{minute.ToString().PadLeft(2, '0')}:" +
-                $"{second.ToString().PadLeft(2, '0')}";
-            if (minute < 3)
+
+            if (minute < 1)
             {
-                MessageBox.Show("计时未到3分钟，无法打卡，本次不会记录", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("计时未到1分钟，无法打卡，本次不会记录", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                NowTime.Content = "0000:00:00";
                 return;
             }
             else
             {
                 MessageBox.Show("打卡成功", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            string? nowTime = NowTime.Content.ToString();
-            string? times = Times.Content.ToString();
+
             hour = 0;
             minute = 0;
             second = 0;
-            sql.Update(ProjectListComboBox.Text, nowTime, times);
+            string? nowTime = NowTime.Content.ToString();
+            NowTime.Content = "0000:00:00";
+            sql.Update(ProjectListComboBox.Text, nowTime);
             ViewMessageUpdate(ProjectListComboBox.Text);
+
         }
 
         private void NewProject_Click(object sender, RoutedEventArgs e)
