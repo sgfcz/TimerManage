@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Windows;
+using System.IO;
 using TimeManager.Model;
 
 namespace TimeManager.Core
@@ -12,6 +13,10 @@ namespace TimeManager.Core
         SQLiteConnection sqlServer;
         public SqlServer()
         {
+            if (!Directory.Exists("./Data/"))
+            {
+                Directory.CreateDirectory("./Data");
+            }
             sqlServer = new SQLiteConnection("data source=./Data/base.db3"); //需要在生成目录新建Data文件夹
         }
         public bool connect()
