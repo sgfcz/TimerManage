@@ -90,7 +90,7 @@ namespace TimeManager
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            if (ProjectListComboBox == null)
+            if (!ProjectListComboBox.HasItems)
             {
                 MessageBox.Show("无计时项目！", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -129,6 +129,8 @@ namespace TimeManager
         {
             dispatcherTimer.Stop();
             Start.IsEnabled = true;
+            Pause.IsEnabled = false;
+
             if (!_start)
                 return;
             _start = false;
