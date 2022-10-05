@@ -136,7 +136,7 @@ namespace TimeManager
             if (minute < 1)
             {
                 MessageBox.Show("计时未到1分钟，无法打卡，本次不会记录", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-                NowTime.Content = "0000:00:00";
+                initTime();
                 return;
             }
             else
@@ -144,14 +144,18 @@ namespace TimeManager
                 MessageBox.Show("打卡成功", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
+            string? nowTime = NowTime.Content.ToString();
+            initTime();
+            sql.Update(ProjectListComboBox.Text, nowTime);
+            ViewMessageUpdate(ProjectListComboBox.Text);
+        }
+
+        private void initTime()
+        {
+            NowTime.Content = "0000:00:00";
             hour = 0;
             minute = 0;
             second = 0;
-            string? nowTime = NowTime.Content.ToString();
-            NowTime.Content = "0000:00:00";
-            sql.Update(ProjectListComboBox.Text, nowTime);
-            ViewMessageUpdate(ProjectListComboBox.Text);
-
         }
 
         private void NewProject_Click(object sender, RoutedEventArgs e)
