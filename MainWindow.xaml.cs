@@ -90,6 +90,11 @@ namespace TimeManager
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
+            if (ProjectListComboBox == null)
+            {
+                MessageBox.Show("无计时项目！", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             dispatcherTimer.Start();
             _start = true;
             Start.IsEnabled = false;
