@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <BitmapImage x:Key="HeaderImage" UriSource="./Image/timer-flash-line.png"/>
+    <BitmapImage x:Key="play" UriSource="./Image/play-fill.png"/>
+    <BitmapImage x:Key="pause" UriSource="./Image/pause-fill.png"/>
+    <BitmapImage x:Key="stop" UriSource="./Image/stop-fill.png"/>
+</ResourceDictionary>
