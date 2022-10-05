@@ -21,10 +21,20 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <StackPanel x:Name="futionStack" Orientation="Horizontal" Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0">
-                <Button x:Name="Start" Margin="10, 0, 10, 0" Content="开始" Click="Start_Click" Width="25" Height="25"/>
-                <Button x:Name="Pause" Margin="10, 0, 10, 0" Content="暂停" Click="Pause_Click" Width="25" Height="25"/>
-                <Button x:Name="Stop" Margin="10, 0, 10, 0" Content="停止" Click="Stop_Click" Width="25" Height="25"/>
+            <StackPanel x:Name="futionStack" Orientation="Horizontal" Width="Auto" VerticalAlignment="Center" 
+                        HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0">
+                <Button x:Name="Start" Margin="10, 0, 10, 0" 
+                        Click="Start_Click" Width="25" Height="25">
+                        <Image Source="{StaticResource play}"/>
+                </Button>
+                <Button x:Name="Pause" Margin="10, 0, 10, 0" Click="Pause_Click" 
+                        Width="25" Height="25">
+                    <Image Source="{StaticResource pause}" />
+                </Button>
+                <Button x:Name="Stop" Margin="10, 0, 10, 0" Click="Stop_Click" 
+                        Width="25" Height="25">
+                    <Image Source="{StaticResource stop}"/>
+                </Button>
             </StackPanel>
             <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" >
                 <Grid.ColumnDefinitions>
@@ -36,20 +46,30 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Label Content="本次运行：" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
-                <Label x:Name="NowTime" Content="0000:00:00"  HorizontalAlignment="Left" Margin="1" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" FontSize="14"/>
-                <Label Content="总时间：" HorizontalAlignment="Right" Margin="1" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" FontSize="14"/>
-                <Label x:Name="CountTime" Content="0000:00:00" HorizontalAlignment="Left" Margin="1" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" FontSize="14"/>
-                <Label Content="打卡次数：" Grid.Row="2" Grid.Column="0" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <Label Content="本次运行：" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" 
+                       Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
+                <Label x:Name="NowTime" Content="0000:00:00"  HorizontalAlignment="Left" Margin="1" 
+                       VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" FontSize="14"/>
+                <Label Content="总时间：" HorizontalAlignment="Right" Margin="1" VerticalAlignment="Center" 
+                       Grid.Row="1" Grid.Column="0" FontSize="14"/>
+                <Label x:Name="CountTime" Content="0000:00:00" HorizontalAlignment="Left" Margin="1" 
+                       VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" FontSize="14"/>
+                <Label Content="打卡次数：" Grid.Row="2" Grid.Column="0" FontSize="14" HorizontalAlignment="Right" 
+                       VerticalAlignment="Center" HorizontalContentAlignment="Center" 
+                       VerticalContentAlignment="Center" />
                 <Label x:Name="Times" Content="0" Margin="1" Grid.Row="2" Grid.Column="1"/>
             </Grid>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Label Content="项目名称：" Margin="3, 0, 3, 0" FlowDirection="LeftToRight" Padding="0,0,0,0" Height="16" FontSize="14"/>
-                <ComboBox x:Name="ProjectListComboBox" Margin="3, 0, 3, 0" Width="161" Height="22" FontSize="14" DisplayMemberPath="Name" SelectionChanged="ProjectListComboBox_SelectionChanged"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
+                <Label Content="项目名称：" Margin="3, 0, 3, 0" FlowDirection="LeftToRight" Padding="0,0,0,0" 
+                       Height="16" FontSize="14"/>
+                <ComboBox x:Name="ProjectListComboBox" Margin="3, 0, 3, 0" Width="161" Height="22" FontSize="14" 
+                          DisplayMemberPath="Name" SelectionChanged="ProjectListComboBox_SelectionChanged"/>
             </StackPanel>
         </Grid>
-        <StackPanel x:Name="ProjectStack" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="Auto">
+        <StackPanel x:Name="ProjectStack" Orientation="Vertical" HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" Width="75" Height="Auto">
             <Button x:Name="NewProject" Margin="0, 10, 0, 10" Content="新建项目" Click="NewProject_Click" FontSize="14"/>
             <Button x:Name="DeleteProject" Content="删除项目" Margin="0, 10, 0, 10" Click="DeleteProject_Click" FontSize="14"/>
             <Button x:Name="ProjectListShowWin" Content="项目总览" Margin="0, 10, 0, 10" Click="ProjectList_Click" FontSize="14" Padding="1,1,1,1"/>
