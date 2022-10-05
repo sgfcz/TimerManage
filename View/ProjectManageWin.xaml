@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeManager.View"
         mc:Ignorable="d"
-        Title="ProjectManage" Height="450" Width="800">
+        Title="ProjectManage" Height="450" Width="800" Icon="{StaticResource HeaderImage}">
     <Grid>
         <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="14"/>
 

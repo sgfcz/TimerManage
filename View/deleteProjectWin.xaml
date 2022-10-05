@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeManager.View"
         mc:Ignorable="d"
-        Title="deleteProjectWin" Height="141" Width="374" MaxHeight="141" MaxWidth="374">
+        Title="deleteProjectWin" Height="141" Width="374" MaxHeight="141" MaxWidth="374" Icon="{StaticResource HeaderImage}">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="374" Height="136">
         <Label Content="项目名称:" HorizontalAlignment="Left" Margin="95,44,0,0" VerticalAlignment="Top" FontSize="14"/>
         <ComboBox x:Name="DeleteList" HorizontalAlignment="Left" Margin="169,44,0,0" 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeManager.View"
         mc:Ignorable="d"
-        Title="NewProject" Height="250" Width="250" MaxHeight="250" MaxWidth="250">
+        Title="NewProject" Height="250" Width="250" MaxHeight="250" MaxWidth="250" Icon="{StaticResource HeaderImage}">
     <Grid>
         <TextBox x:Name="TextBox_NewName" HorizontalAlignment="Center" Margin="0,100,0,0" 
                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" 
