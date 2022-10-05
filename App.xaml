@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:TimeManager"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="./Resources/Dictionary.xaml"/>
     </Application.Resources>
 </Application>

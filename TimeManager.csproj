@@ -5,10 +5,29 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\Image\timer-flash-line.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Image\pause-fill.png" />
+    <None Remove="Resources\Image\play-fill.png" />
+    <None Remove="Resources\Image\stop-fill.png" />
+    <None Remove="Resources\Image\timer-flash-line.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Image\timer-flash-line.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.116" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Image\pause-fill.png" />
+    <Resource Include="Resources\Image\play-fill.png" />
+    <Resource Include="Resources\Image\stop-fill.png" />
+    <Resource Include="Resources\Image\timer-flash-line.png" />
   </ItemGroup>
 
 </Project>

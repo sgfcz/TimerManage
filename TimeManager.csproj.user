@@ -21,6 +21,9 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Resources\Dictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\deleteProjectWin.xaml">
       <SubType>Designer</SubType>
     </Page>
